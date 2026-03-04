@@ -42,7 +42,7 @@ app.get("/say-good-morning", (req, res) => {
 
 app.get("/get-user/:userName", (req, res) => {
     const userName = req.params.userName
-    res.send("Hello, ${userName}!")
+    res.send(`Hello, ${userName}!`)
 })
 
 app.get("/order-tacos/:protein/:numTacos", (req, res) => {
