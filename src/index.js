@@ -2,13 +2,55 @@
 // Boilerplate Code to Set Up Server
 // ---------------------------------
 
+// importing our Node modules
+import express from "express"
+import fs from "fs/promises"
+
+// creating an instance of the express module so that we can use all the methods that come with it.
+const app = express()
+
+// tell express which port to listen to to receive requests
+const port = 3000;
+
+// Tell express which port to listen to receipve requests
+app.use(express.json())
+
+app.listen(port, () => {
+    console.log(`My server is listening on port: ${port}`)
+})
+
 // ---------------------------------
 // Helper Functions
 // ---------------------------------
 
+
 // ---------------------------------
 // Our very first API Endpoints
 // ---------------------------------
+// app.get() takes in 2 parameters:
+// 1. The endpoint, which defines what a URL path the server should listen to
+//  2. The callback function, what we do when we receive a request at the endpont
+    // the callback function takes in 2 parametersL the request & response.
+app.get("/", (req, res) => {
+    // the res.send() method sends back a String as a response
+    res.send("Hello, World")
+})
+
+app.get("/say-good-morning", (req, res) => {
+    res.send("Good morning!")
+})
+
+app.get("/get-user/:userName", (req, res) => {
+    const userName = req.params.userName
+    res.send("Hello, ${userName}!")
+})
+
+app.get("/order-tacos/:protein/:numTacos", (req, res) => {
+    const protein = req.params.protein
+    const numTacos = req.params.numTacos
+
+    res.send(`Thanks for your order! You ordered ${numTacos} ${protein} tacos`)
+})
 
 // --------------------------------
 // 🚀 LEVEL 1 CHALLENGES 
