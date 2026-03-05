@@ -58,13 +58,25 @@ app.get("/order-tacos/:protein/:numTacos", (req, res) => {
 
 // 1. 🏆 Add a /goodbye endpoint that responds with "Goodbye, see you later!"
 
+app.get("/goodbye", (req, res) => {
+    res.send("Goodbye, see you later!")
+})
+
 // 2. 🏆 Add a /happy-birthday endpoint that responds with "Happy birthday!!!"
+
+app.get("/happy-birthday", (req, res) => {
+    res.send("Happy birthday")
+})
 
 // --------------------------------
 // 🚀 LEVEL 2 CHALLENGES — ADDING DYNAMIC PARAMETERS
 // --------------------------------
 
 // 1. 🏆 Add a /happy-birthday/:name endpoint says "Happy birthday, [name]!!!"
+app.get("/happy-birthday/:name", (req, res) => {
+    const name = req.params.name
+    res.send(`Happy birthday ${name}`)
+})
 
 // 2. 🏆 Add a /say-hello/:name/:language endpoint that says hello in multiple languages. Examples:
 //      - If language = "English", respond with "Hello, [name]!"
@@ -73,6 +85,23 @@ app.get("/order-tacos/:protein/:numTacos", (req, res) => {
 //      - If language = "Turkish", respond with "Merhaba, [name]!"
 //      - Add as many languages as you want! 
 //      - Otherwise, respond with "Language not supported."" 
+
+app.get("/say-hello/:name/:language", (req, res) => {
+    const name = req.params.name
+    const language = req.params.language
+
+    if (language === "English") {
+        res.send(`Hello, ${name}`)
+    } else if (language === "Spanish") {
+        res.send(`Hola, ${name}`)
+    } else if (language === "Vietnamese") {
+        res.send(`Xin chao, ${name}`)
+    } else if (language === "Turkish") {
+        res.send(`Merhaba, ${name}`)
+    } else {
+        res.send("Language not supported.")
+    }
+})
 
 // --------------------------------
 // 🚀 LEVEL 3 CHALLENGES — EVEN MORE DYNAMIC PARAMETERS
